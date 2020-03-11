@@ -12,6 +12,7 @@
   height: 2%;
   background-color: #000000;
   border: 1px solid #ffffff;
+  z-index: 2;
 }
 
 .snake-food{

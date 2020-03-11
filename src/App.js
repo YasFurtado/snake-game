@@ -12,7 +12,7 @@ const getRandomCoordinates = () => {
 class App extends Component{
 
   state = {
-    food: getRandomCoordinates,
+    food: getRandomCoordinates (),
     snakeDots: [
       [0,0],
       [2,0]
