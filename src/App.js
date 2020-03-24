@@ -125,7 +125,7 @@ class App extends Component{
   }
 
   onGameOver(){
-    alert( `Game over. Snake length is ${this.state.snakeDots.length}`);
+    alert( `Você só fez ${this.state.snakeDots.length} pontos?! The life Snake (A vida cobra)`);
     this.setState(initialState)
 
   }
