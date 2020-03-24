@@ -9,9 +9,8 @@ const getRandomCoordinates = () => {
   let y = Math.floor((Math.random()*(max-min+1)+min)/2)*2;
   return [x,y]
 }
-class App extends Component{
 
-  state = {
+const initialState = {
     food: getRandomCoordinates (),
     speed:200,
     direction: 'RIGHT',
@@ -19,7 +18,11 @@ class App extends Component{
       [0,0],
       [2,0]
     ]
-  }
+}
+
+class App extends Component{
+
+  state = initialState;
 
   componentDidMount(){
     setInterval(this.moveSnake, this.state.speed);
@@ -31,8 +34,8 @@ class App extends Component{
   }
 
   onKeyDown = (e) => {
-    e = e || window.event; 
-    switch (e.KeyCode){
+    e = e || window.event;
+    switch (e.keyCode) {
       case 38:
         this.setState({direction: 'UP'});
         break;
@@ -49,7 +52,7 @@ class App extends Component{
   }
 
   moveSnake = () => {
-    let dots = [...this.state.snakeDots]
+    let dots = [...this.state.snakeDots];
     let head = dots[dots.length - 1];
 
     switch (this.state.direction) {
@@ -57,7 +60,7 @@ class App extends Component{
         head = [head[0] + 2, head[1]];
         break;
       case 'LEFT':
-        head = [head[0] + 2, head[1]];
+        head = [head[0] - 2, head[1]];
         break;
       case 'DOWN':
         head = [head[0], head[1] + 2];
@@ -82,6 +85,7 @@ class App extends Component{
 
   onGameOver(){
     alert( `Game over. Snake length is ${this.state.snakeDots.length}`);
+    this.setState(initialState)
 
   }
 
